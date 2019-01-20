@@ -59,7 +59,15 @@ mkdir -p config/$K8SHA_HOST3/{keepalived,nginx-lb}
 cat << EOF > config/$K8SHA_HOST1/kubeadm-config.yaml
 apiVersion: kubeadm.k8s.io/v1alpha2
 kind: MasterConfiguration
-kubernetesVersion: v1.11.1
+kubernetesVersion: v1.12.3
+imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers
+api:
+  advertiseAddress: ${K8SHA_IP1}
+  controlPlaneEndpoint: ${K8SHA_VIP}:16443
+controllerManagerExtraArgs:
+  node-monitor-grace-period: 10s
+  pod-eviction-timeout: 10s
+
 apiServerCertSANs:
 - ${K8SHA_HOST1}
 - ${K8SHA_HOST2}
@@ -91,7 +99,15 @@ EOF
 cat << EOF > config/$K8SHA_HOST2/kubeadm-config.yaml
 apiVersion: kubeadm.k8s.io/v1alpha2
 kind: MasterConfiguration
-kubernetesVersion: v1.11.1
+kubernetesVersion: v1.12.3
+
+imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers
+api:
+  advertiseAddress: ${K8SHA_IP2}
+  controlPlaneEndpoint: ${K8SHA_VIP}:16443
+controllerManagerExtraArgs:
+  node-monitor-grace-period: 10s
+  pod-eviction-timeout: 10s
 apiServerCertSANs:
 - ${K8SHA_HOST1}
 - ${K8SHA_HOST2}
@@ -124,7 +140,15 @@ EOF
 cat << EOF > config/$K8SHA_HOST3/kubeadm-config.yaml
 apiVersion: kubeadm.k8s.io/v1alpha2
 kind: MasterConfiguration
-kubernetesVersion: v1.11.1
+kubernetesVersion: v1.12.3
+
+imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers
+api:
+  advertiseAddress: ${K8SHA_HOST3}
+  controlPlaneEndpoint: ${K8SHA_VIP}:16443
+controllerManagerExtraArgs:
+  node-monitor-grace-period: 10s
+  pod-eviction-timeout: 10s
 apiServerCertSANs:
 - ${K8SHA_HOST1}
 - ${K8SHA_HOST2}

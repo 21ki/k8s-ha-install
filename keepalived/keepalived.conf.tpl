@@ -23,7 +23,7 @@ vrrp_instance VI_1 {
     virtual_ipaddress {
         K8SHA_VIP
     }
-    track_script {
-       chk_apiserver
-    }
+#    track_script {
+#       chk_apiserver
+#    }
 }
