@@ -45,7 +45,7 @@ export K8SHA_CALICO_REACHABLE_IP=192.168.0.1
 
 # kubernetes CIDR pod subnet, if CIDR pod subnet is "172.168.0.0/16" please set to "172.168.0.0"
 export K8SHA_CIDR=172.168.0.0
-
+# 10.90.0 
 ##############################
 # please do not modify anything below
 ##############################
@@ -144,7 +144,7 @@ kubernetesVersion: v1.12.3
 
 imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers
 api:
-  advertiseAddress: ${K8SHA_HOST3}
+  advertiseAddress: ${K8SHA_IP3}
   controlPlaneEndpoint: ${K8SHA_VIP}:16443
 controllerManagerExtraArgs:
   node-monitor-grace-period: 10s
